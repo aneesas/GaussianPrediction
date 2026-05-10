@@ -13,38 +13,38 @@ else
 fi
 
 # Train
-./scripts/train/d-nerf/bouncingballs.sh
+./scripts/train/d-nerf/bouncingballs_orig.sh
 wait
 ./scripts/predict/d-nerf/bouncingballs.sh
 wait
 
-./scripts/train/d-nerf/hellwarrior.sh 
-wait
-./scripts/predict/d-nerf/hellwarrior.sh 
-wait
+# ./scripts/train/d-nerf/hellwarrior.sh 
+# wait
+# ./scripts/predict/d-nerf/hellwarrior.sh 
+# wait
 
-./scripts/train/d-nerf/hook.sh 
-wait
-./scripts/predict/d-nerf/hook.sh 
-wait
+# ./scripts/train/d-nerf/hook.sh 
+# wait
+# ./scripts/predict/d-nerf/hook.sh 
+# wait
 
-./scripts/train/d-nerf/mutant.sh 
-wait
-./scripts/predict/d-nerf/mutant.sh 
-wait
+# ./scripts/train/d-nerf/mutant.sh 
+# wait
+# ./scripts/predict/d-nerf/mutant.sh 
+# wait
 
-./scripts/train/d-nerf/standup.sh 
-wait
-./scripts/predict/d-nerf/standup.sh 
-wait
+# ./scripts/train/d-nerf/standup.sh 
+# wait
+# ./scripts/predict/d-nerf/standup.sh 
+# wait
 
-./scripts/train/d-nerf/jumping.sh 
+./scripts/train/d-nerf/jumping_orig.sh 
 wait
 ./scripts/predict/d-nerf/jumping.sh 
 wait
 
-./scripts/train/d-nerf/trex.sh
-wait
-./scripts/predict/d-nerf/trex.sh
-wait
+# ./scripts/train/d-nerf/trex.sh
+# wait
+# ./scripts/predict/d-nerf/trex.sh
+# wait
 

@@ -5,7 +5,9 @@ if [ $# -eq 0 ]; then
 else
     seed=$1 
 fi
-scene_name="bouncingballs"
+
+remove_k=16
+scene_name="bouncingballs_rm${remove_k}"
 max_keypoints=100
 adaptive_points_num=100
 time_freq=6
@@ -18,7 +20,7 @@ adaptive_from_iter=3000
 feature_amplify=0.5
 
 # Train
-CUDA_VISIBLE_DEVICES=0 python train.py -s $source_path \
+CUDA_VISIBLE_DEVICES=1 python train.py -s $source_path \
     -m $model_path --max_points $max_keypoints --adaptive_points_num $adaptive_points_num \
     --iterations 60000 --test_iterations 60000 --jointly_iteration 1000 --time_freq $time_freq \
     --densify_from_iter 3000 --densify_until_iter 20000 --norm_rotation \

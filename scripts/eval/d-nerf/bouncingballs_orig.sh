@@ -1,5 +1,4 @@
-remove_k=16
-scene_name="jumpingjacks_rm${remove_k}"
+scene_name="bouncingballs"
 max_keypoints=100
 adaptive_points_num=100
 time_freq=6
