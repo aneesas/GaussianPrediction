@@ -12,7 +12,10 @@
 import os
 os.environ["OMP_NUM_THREADS"] = "1"  # noqa
 os.environ["MKL_NUM_THREADS"] = "1"  # noqa
+print("CVD =", os.environ.get("CUDA_VISIBLE_DEVICES"))
 import torch
+print("device count =", torch.cuda.device_count())
+print("current =", torch.cuda.current_device(), torch.cuda.get_device_name(0))
 import torchvision
 from options.gaussian_option import Gaussian_Options
 from random import randint
