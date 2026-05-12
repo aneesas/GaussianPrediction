@@ -4,6 +4,7 @@ import random
 
 DATASET_DIR = "/home/aneesa/test_data/creeper"
 OUT_DIR = os.path.join(DATASET_DIR, "splits_gp")
+OUT_DIR_PREDICT = os.path.join(DATASET_DIR, "splits_gp_predict")
 SEED = 42
 
 TOTAL = 360
@@ -48,6 +49,22 @@ dataset_path = os.path.join(OUT_DIR, "dataset.json")
 with open(dataset_path, "w") as f:
     json.dump(new_dataset, f, indent=2)
 print(f"dataset.json: train={len(train_ids)}, val={len(val_ids)}, predict={len(predict_ids)} -> {dataset_path}")
+
+# Second dataset.json for GCN-prediction step: all 300 frames at warp_id 0..299
+# go to train_ids; the 60 predict frames go to val_ids so the loader treats them
+# as the test split when --max_time is set just below 300/359.
+pool_ids = [ids_sorted[i] for i in range(TRAIN_POOL)]
+predict_dataset = dict(original)
+predict_dataset["train_ids"] = pool_ids
+predict_dataset["val_ids"] = predict_ids
+# predict_dataset["predict_ids"] = predict_ids
+predict_dataset["num_exemplars"] = len(pool_ids)
+
+os.makedirs(OUT_DIR_PREDICT, exist_ok=True)
+predict_path = os.path.join(OUT_DIR_PREDICT, "dataset.json")
+with open(predict_path, "w") as f:
+    json.dump(predict_dataset, f, indent=2)
+print(f"dataset.json: train={len(pool_ids)}, val={len(predict_ids)} -> {predict_path}")
 
 def write_indices(name, indices):
     txt_path = os.path.join(OUT_DIR, f"{name}.txt")
