@@ -27,14 +27,12 @@ predict_idx = list(range(TRAIN_POOL, TOTAL))
 rng = random.Random(SEED)
 shuffled = list(range(TRAIN_POOL))
 rng.shuffle(shuffled)
-val_idx = sorted(shuffled[:VAL_SIZE])
-test_idx = sorted(shuffled[VAL_SIZE:VAL_SIZE + TEST_SIZE])
-held_out = set(val_idx) | set(test_idx)
+val_idx = sorted(shuffled[:VAL_SIZE + TEST_SIZE])
+held_out = set(val_idx)
 train_idx = [i for i in range(TRAIN_POOL) if i not in held_out]
 
 train_ids = [ids_sorted[i] for i in train_idx]
 val_ids = [ids_sorted[i] for i in val_idx]
-test_ids = [ids_sorted[i] for i in test_idx]
 predict_ids = [ids_sorted[i] for i in predict_idx]
 
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -74,5 +72,4 @@ def write_indices(name, indices):
 
 write_indices("train", train_idx)
 write_indices("val", val_idx)
-write_indices("test", test_idx)
 write_indices("predict", predict_idx)
