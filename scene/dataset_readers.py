@@ -234,7 +234,7 @@ def readNerfSyntheticInfo(path, white_background, eval, extension=".png", max_ti
     print("Reading Training Transforms")
     train_cam_infos, test_cam_infos = readCamerasFromTransforms(path, "transforms_train.json", white_background, extension, max_time=max_time)
     print("Reading Test Transforms")
-    if max_time == 1.0:
+    if max_time == 1.0 and len(test_cam_infos) == 0:
         test_cam_infos, _ = readCamerasFromTransforms(path, "transforms_test.json", white_background, extension)
     
     if os.path.exists(os.path.join(path, "transforms_render.json")):
