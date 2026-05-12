@@ -16,7 +16,7 @@ wait
 wait
 
 root="./results"
-model_path="finalVersion"
-dataset="dycheck_1.0"
+model_path="points_200_300"
+dataset="dycheck_1.0_2x"
 
 python show.py -r $root -d $dataset -m $model_path
