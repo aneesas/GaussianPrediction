@@ -219,7 +219,7 @@ if __name__ == "__main__":
     gaussians.active_sh_degree = gaussians.max_sh_degree
     gaussians.final_kpts_num = model_params["super_gaussians"].shape[0] if "super_gaussians" in model_params.keys() else None
 
-    scene = Scene(dataset, gaussians, shuffle=False)
+    scene = Scene(dataset, gaussians, shuffle=False, ratio=args.ratio)
     gaussians.restore(opt_dict, opt, first_iter)
     gaussians.load_state_dict(model_params, strict=False)
 
