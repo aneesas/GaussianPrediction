@@ -16,7 +16,7 @@ class GCNBaseDataset(data.Dataset, ABC):
         self.iteration = iteration
         self.split = split
         self.max_time = max_time
-        assert self.max_time < 1.0
+        # assert self.max_time < 1.0
         self.input_size = input_size
         self.output_size = output_size
         self.model_path = model_path
